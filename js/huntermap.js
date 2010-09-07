@@ -17,17 +17,17 @@ theHunter.maps = theHunter.maps || {};
     };
 
     theHunter.maps.MarkerTypeImages = {};
-    theHunter.maps.MarkerTypeImages[theHunter.maps.MarkerTypeId.LODGE] = new google.maps.MarkerImage("http://wizkid.thehunterbeta.com/static/themes/default/widget/Map/Map-Icons-32x32.png",
+    theHunter.maps.MarkerTypeImages[theHunter.maps.MarkerTypeId.LODGE] = new google.maps.MarkerImage("gfx/Map-Icons-32x32.png",
         new google.maps.Size(32, 32),
         new google.maps.Point(64, 0),
         new google.maps.Point(16, 16)
     );
-    theHunter.maps.MarkerTypeImages[theHunter.maps.MarkerTypeId.CAMPING] = new google.maps.MarkerImage("http://wizkid.thehunterbeta.com/static/themes/default/widget/Map/Map-Icons-32x32.png",
+    theHunter.maps.MarkerTypeImages[theHunter.maps.MarkerTypeId.CAMPING] = new google.maps.MarkerImage("gfx/Map-Icons-32x32.png",
         new google.maps.Size(32, 32),
         new google.maps.Point(160, 0),
         new google.maps.Point(16, 16)
     );
-    theHunter.maps.MarkerTypeImages[theHunter.maps.MarkerTypeId.TOWER] = new google.maps.MarkerImage("http://wizkid.thehunterbeta.com/static/themes/default/widget/Map/Map-Icons-32x32.png",
+    theHunter.maps.MarkerTypeImages[theHunter.maps.MarkerTypeId.TOWER] = new google.maps.MarkerImage("gfx/Map-Icons-32x32.png",
         new google.maps.Size(32, 32),
         new google.maps.Point(128, 0),
         new google.maps.Point(16, 16)
@@ -66,7 +66,7 @@ theHunter.maps = theHunter.maps || {};
                                 "South Cliff Lodge",
                                 theHunter.maps.MarkerTypeId.LODGE,
                                 new google.maps.Point(-13661, 8645)
-                            ),
+                            )
                         ],
                         CAMPING: [
 
@@ -92,7 +92,7 @@ theHunter.maps = theHunter.maps || {};
                                 "Logger's Point Border Lodge",
                                 theHunter.maps.MarkerTypeId.LODGE,
                                 new google.maps.Point(-8175, 5229)
-                            ),
+                            )
                         ],
                         CAMPING: [
 
@@ -109,8 +109,9 @@ theHunter.maps = theHunter.maps || {};
     for (var r in theHunter.maps.Reserves) {
         var b = new google.maps.LatLngBounds();
         var reserve = theHunter.maps.Reserves[r];
-        for (var r2 in reserve.Reserves)
+        for (var r2 in reserve.Reserves) {
             b.union(reserve.Reserves[r2].bounds);
+        }
         reserve.bounds = b;
     }
 
@@ -119,7 +120,7 @@ theHunter.maps = theHunter.maps || {};
             var marker = markers[m].getMarker();
             marker.setMap(map);
         }
-    }
+    };
 
     theHunter.maps.MapTypeId = {
         SATELLITE: "theHunter_satellite"
@@ -129,10 +130,22 @@ theHunter.maps = theHunter.maps || {};
     mapTypes[theHunter.maps.MapTypeId.SATELLITE] = new google.maps.ImageMapType({
         name: 'theHunter Satellite',
         getTileUrl: function(coord, zoom) {
-            z = zoom - 11;
+            var z = zoom - 11;
             var corr = Math.pow(2, zoom) - Math.pow(2, z);
-            console.log("http://wizkid.thehunterbeta.com/bin/map/zoom/"+ (z+1) +"/x/"+ (coord.x - corr) +"/y/"+ (coord.y - corr) +"/type/satellite/image.jpg");
-            return "http://wizkid.thehunterbeta.com/bin/map/zoom/"+ (z+1) +"/x/"+ (coord.x - corr) +"/y/"+ (coord.y - corr) +"/type/satellite/image.jpg"
+            
+            var p_x = coord.x - corr;
+            var p_y = coord.y - corr;
+            
+            var maxCoord = Math.pow(2, (z+1)) - 1;
+            if (p_x > maxCoord || p_y > maxCoord || p_x < 0 || p_y < 0) {
+                return 'http://maps.gstatic.com/intl/en_us/mapfiles/transparent.png';
+            }
+            
+            p_x = (p_x < 16 ? '0' : '') + p_x.toString(16);
+            p_y = (p_y < 16 ? '0' : '') + p_y.toString(16);
+            var p_type = "satellite";
+            
+            return 'http://thehunter.org.linweb58.kontrollpanelen.se/map/tiles/' + p_type + '/' + (z + 1) + '/tile_' + p_y + p_x + '.jpg';
         },
         tileSize: new google.maps.Size(128, 128),
         isPng: false,
@@ -149,14 +162,14 @@ theHunter.maps = theHunter.maps || {};
 
         var m = new google.maps.Map(div, options);
 
-        for (var k in mapTypes)
+        for (var k in mapTypes) {
             m.mapTypes.set(k, mapTypes[k]);
+        }
         m.setMapTypeId(theHunter.maps.MapTypeId.SATELLITE);
 
-        if (!center)
+        if (!center) {
             m.fitBounds(theHunter.maps.Reserves.EVERGREEN.bounds);
-
-        console.log(m);
+        }
 
         return m;
     };
