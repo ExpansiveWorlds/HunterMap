@@ -8,7 +8,9 @@ HMap.map = (function() {
 		init: function(div, options) {
 	        options = options || {};
 	        
-	        var center = (options.center) ? true : false;
+	        options.center = options.center || HMap.map.toLatLng(new google.maps.Point(HMap.locations[0].map_x, HMap.locations[0].map_z));
+	        options.zoom = options.zoom || 12;
+	        
 	        options.disableDefaultUI = true;
 	        options.navigationControl = true;
 	        options.scaleControl = false;
@@ -17,11 +19,7 @@ HMap.map = (function() {
 	
 			HMap.mapTypes.set(gmap);
 	
-	        if (!center) {
-	            gmap.fitBounds(HMap.locations.EVERGREEN.Reserves.WHITEHARTISLAND.bounds);
-	        }
-
-	        HMap.markers.populateMarkers();
+	        HMap.markers.populateMarkers(HMap.map);
 	        
 	        google.maps.event.addListener(gmap, 'zoom_changed', HMap.markers.updateMarkers);
 	
@@ -98,6 +96,14 @@ HMap.markers = (function() {
     var getVisibleState = function(type, zoom) {
 	    return (zoom >= HMap.markerTypes[type].minZoom && zoom <= HMap.markerTypes[type].maxZoom);
     };
+    
+    var bindInfoWindow = function(marker, content, map) {
+		var infoWindow = new google.maps.InfoWindow({ content: content });
+
+		google.maps.event.addListener(marker, 'click', function() {
+			infoWindow.open(map, marker);
+		});	     
+    };
         
     return {    	
 		populateMarkers: function() {
@@ -106,14 +112,19 @@ HMap.markers = (function() {
 			previousZoomLevel = zoom;
 			var imageZoomLevel = getImageZoomLevel(zoom);
 			
-			for (var i = 0; i < HMap.worldObjects.length; i++) {
-				var obj = HMap.worldObjects[i];
+			for (var i = 0; i < HMap.locations.length; i++) {
+				var obj = HMap.locations[i];
 				var marker =  new google.maps.Marker({
 	    			title: obj.title,
 	    			icon: HMap.markerTypes[obj.type].icon[imageZoomLevel],
 	    			position: HMap.map.toLatLng(new google.maps.Point(obj.map_x, obj.map_z)),
 	    			map: map
 	    		});
+	    		
+	    		if  (obj.desc) {
+	    			bindInfoWindow(marker, obj.desc, map);
+	    		}
+	    		
 	    		marker._obj = obj;
 	    		marker.setVisible(getVisibleState(obj.type, zoom));
 	    		
