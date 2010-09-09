@@ -90,70 +90,13 @@ HMap.markers = (function() {
 
 	var markers = [];
 	var previousZoomLevel;
-	var types = {};
-	
-	types[HMap.markerTypeId.LODGE] = {
-		0: 	new google.maps.MarkerImage(
-				"gfx/Map-Icons-32x32.png",
-		        new google.maps.Size(32, 32),
-		        new google.maps.Point(64, 0),
-		        new google.maps.Point(16, 16)
-    		),
-		1: 	new google.maps.MarkerImage(
-				"gfx/Map-Icons-16x16.png",
-		        new google.maps.Size(16, 16),
-		        new google.maps.Point(32, 0),
-		        new google.maps.Point(8, 8)
-    		)
-	};
-	
-    types[HMap.markerTypeId.CAMPSITE] = {
-    	0: new google.maps.MarkerImage(
-		    	"gfx/Map-Icons-32x32.png",
-		        new google.maps.Size(32, 32),
-		        new google.maps.Point(160, 0),
-		        new google.maps.Point(16, 16)
-		    ),
-    	1: new google.maps.MarkerImage(
-				"gfx/Map-Icons-16x16.png",
-		        new google.maps.Size(16, 16),
-		        new google.maps.Point(80, 0),
-		        new google.maps.Point(8, 8)
-		    )
-    };
-    
-    types[HMap.markerTypeId.TOWER] = {
-    	0: new google.maps.MarkerImage(
-		    	"gfx/Map-Icons-32x32.png",
-		        new google.maps.Size(32, 32),
-		        new google.maps.Point(128, 0),
-		        new google.maps.Point(16, 16)    
-		    ),
-    	1: new google.maps.MarkerImage(
-				"gfx/Map-Icons-16x16.png",
-		        new google.maps.Size(16, 16),
-		        new google.maps.Point(64, 0),
-		        new google.maps.Point(8, 8)  
-		    )
-    };
-    
-    types[HMap.markerTypeId.POI] = {
-    	0: new google.maps.MarkerImage(
-			 	"gfx/Map-Icons-32x32.png",
-		        new google.maps.Size(32, 32),
-		        new google.maps.Point(192, 0),
-		        new google.maps.Point(16, 16)    
-		   ),
-    	1: new google.maps.MarkerImage(
-				"gfx/Map-Icons-16x16.png",
-		        new google.maps.Size(16, 16),
-		        new google.maps.Point(96, 0),
-		        new google.maps.Point(8, 8)   
-		   )
-    };    
     
     var getImageZoomLevel = function(zoom) {
     	return zoom < 15 ? 1 : 0;
+    };
+    
+    var getVisibleState = function(type, zoom) {
+	    return (zoom >= HMap.markerTypes[type].minZoom && zoom <= HMap.markerTypes[type].maxZoom);
     };
         
     return {    	
@@ -167,11 +110,12 @@ HMap.markers = (function() {
 				var obj = HMap.worldObjects[i];
 				var marker =  new google.maps.Marker({
 	    			title: obj.title,
-	    			icon: types[obj.type][imageZoomLevel],
+	    			icon: HMap.markerTypes[obj.type].icon[imageZoomLevel],
 	    			position: HMap.map.toLatLng(new google.maps.Point(obj.map_x, obj.map_z)),
 	    			map: map
 	    		});
 	    		marker._obj = obj;
+	    		marker.setVisible(getVisibleState(obj.type, zoom));
 	    		
 	    		markers.push(marker);
 			}
@@ -184,16 +128,24 @@ HMap.markers = (function() {
     		var zoom = HMap.map.getMap().getZoom();
     		var imageZoomLevel = getImageZoomLevel(zoom);
     		
-    		if (imageZoomLevel != getImageZoomLevel(previousZoomLevel)) {
-	    		for (var i = 0; i < markers.length; i++) {
-	    			markers[i].setIcon(types[markers[i]._obj.type][imageZoomLevel]);
-	    		}
-	    	}
-	    	
+    		// currently loops all markers, room for optimizations by
+    		// doing lookup arrays per marker type
+    		for (var i = 0; i < markers.length; i++) {
+    			// change icon?
+	    		if (imageZoomLevel != getImageZoomLevel(previousZoomLevel)) {
+    				markers[i].setIcon(HMap.markerTypes[markers[i]._obj.type].icon[imageZoomLevel]);
+    			}
+    			
+    			// hide/visible
+    			var isVisible = getVisibleState(markers[i]._obj.type, zoom);
+    			if (isVisible != getVisibleState(markers[i]._obj.type, previousZoomLevel)) {
+    				markers[i].setVisible(isVisible);
+    			}    			
+    		}
+    		
 	    	previousZoomLevel = zoom;
     	},
     	
-    	types: types
     }
     
 })();
