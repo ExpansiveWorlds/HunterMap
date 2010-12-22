@@ -160,3 +160,28 @@ HMap.markers = (function() {
     }
     
 })();
+
+HMap.expedition = (function() {
+
+    return {
+    	/**
+    	 * Plot array with objects having properties map_x, map_z.
+    	 */
+        plot: function(list) {
+            var coords = [];
+            
+            for (var i = 0; i < list.length; i++) {
+            	coords.push( HMap.map.toLatLng(new google.maps.Point(list[i].map_x, list[i].map_z)) );
+            }
+            
+            var expeditionPath = new google.maps.Polyline({
+			    path: coords,
+			    strokeColor: "#FF0000",
+			    strokeOpacity: 1.0,
+			    strokeWeight: 2
+			});
+			
+			expeditionPath.setMap(HMap.map.getMap());
+        }
+    }
+})();
