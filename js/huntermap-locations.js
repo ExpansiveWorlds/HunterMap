@@ -236,8 +236,127 @@ HMap.locations = [
             "map_y": 324,
             "map_z": 8394,
             "title": "Tower",
-
-        }
+        },
+        {
+            "id": 200,
+            type: HMap.markerTypeId.LODGE,
+            "map_x": -7750,
+            "map_y": 272,
+            "map_z": 4432,
+            "title": "Highland Lodge"
+        },
+        {
+            "id": 201,
+            type: HMap.markerTypeId.LODGE,
+            "map_x": -6227,
+            "map_y": 224,
+            "map_z": 5733,
+            "title": "Homestead Lodge"
+        },
+        {
+            "id": 202,
+            type: HMap.markerTypeId.CAMPSITE,
+            "map_x": -7897,
+            "map_y": 285,
+            "map_z": 5689,
+            "title": "Campsite"
+        },
+        {
+            "id": 203,
+            type: HMap.markerTypeId.POI,
+            "map_x": -7039,
+            "map_y": 223,
+            "map_z": 6107,
+            "title": "Fort David"
+        },
+        {
+            "id": 204,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -8131,
+            "map_y": 256,
+            "map_z": 4344,
+            "title": "Tower"
+        },
+        {
+            "id": 205,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -7583,
+            "map_y": 367,
+            "map_z": 4572,
+            "title": "Tower"
+        },
+        {
+            "id": 206,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -7438,
+            "map_y": 428,
+            "map_z": 4984,
+            "title": "Tower"
+        },
+        {
+            "id": 207,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -6889,
+            "map_y": 378,
+            "map_z": 5005,
+            "title": "Tower"
+        },
+        {
+            "id": 208,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -6582,
+            "map_y": 236,
+            "map_z": 6229,
+            "title": "Tower"
+        },
+        {
+            "id": 209,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -6494,
+            "map_y": 241,
+            "map_z": 4094,
+            "title": "Tower"
+        },
+        {
+            "id": 210,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -7150,
+            "map_y": 286,
+            "map_z": 4433,
+            "title": "Tower"
+        },
+        {
+            "id": 211,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -7085,
+            "map_y": 269,
+            "map_z": 3680,
+            "title": "Tower"
+        },
+        {
+            "id": 212,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -8173,
+            "map_y": 259,
+            "map_z": 4723,
+            "title": "Tower"
+        },
+        {
+            "id": 213,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -6200,
+            "map_y": 225,
+            "map_z": 4814,
+            "title": "Tower"
+        },
+        {
+            "id": 214,
+            type: HMap.markerTypeId.TOWER,
+            "map_x": -8275,
+            "map_y": 228,
+            "map_z": 4072,
+            "title": "Tower",
+        }        
     ];
 
 
