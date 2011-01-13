@@ -29,7 +29,7 @@ HMap.locations = [
             "map_x": -14411,
             "map_y": 200,
             "map_z": 6089,
-            "title": "Campsite",
+            "title": "Campsite"
         },
         {
             "id": 3,
@@ -37,7 +37,7 @@ HMap.locations = [
             "map_x": -14477,
             "map_y": 327,
             "map_z": 4365,
-            "title": "Uwi Stones",
+            "title": "Uwi Stones"
         },
         {
             "id": 4,
@@ -45,7 +45,7 @@ HMap.locations = [
             "map_x": -13389,
             "map_y": 233,
             "map_z": 4024,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 5,
@@ -53,7 +53,7 @@ HMap.locations = [
             "map_x": -13874,
             "map_y": 235,
             "map_z": 3371,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 6,
@@ -61,7 +61,7 @@ HMap.locations = [
             "map_x": -13471,
             "map_y": 260,
             "map_z": 4441,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 7,
@@ -69,7 +69,7 @@ HMap.locations = [
             "map_x": -13512,
             "map_y": 229,
             "map_z": 4753,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 8,
@@ -77,7 +77,7 @@ HMap.locations = [
             "map_x": -13650,
             "map_y": 233,
             "map_z": 3411,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 9,
@@ -85,7 +85,7 @@ HMap.locations = [
             "map_x": -13543,
             "map_y": 281,
             "map_z": 3574,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 10,
@@ -93,7 +93,7 @@ HMap.locations = [
             "map_x": -13747,
             "map_y": 361,
             "map_z": 3732,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 11,
@@ -101,7 +101,7 @@ HMap.locations = [
             "map_x": -13918,
             "map_y": 336,
             "map_z": 3904,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 12,
@@ -109,7 +109,7 @@ HMap.locations = [
             "map_x": -14304,
             "map_y": 272,
             "map_z": 3529,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 13,
@@ -117,7 +117,7 @@ HMap.locations = [
             "map_x": -14831,
             "map_y": 223,
             "map_z": 3554,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 14,
@@ -125,7 +125,7 @@ HMap.locations = [
             "map_x": -14437,
             "map_y": 220,
             "map_z": 3334,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 15,
@@ -133,7 +133,7 @@ HMap.locations = [
             "map_x": -13835,
             "map_y": 220,
             "map_z": 5039,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 16,
@@ -141,7 +141,7 @@ HMap.locations = [
             "map_x": -13927,
             "map_y": 327,
             "map_z": 6285,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 17,
@@ -149,7 +149,7 @@ HMap.locations = [
             "map_x": -14189,
             "map_y": 227,
             "map_z": 8111,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 18,
@@ -157,7 +157,7 @@ HMap.locations = [
             "map_x": -13879,
             "map_y": 247,
             "map_z": 8904,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 19,
@@ -165,7 +165,7 @@ HMap.locations = [
             "map_x": -13975,
             "map_y": 222,
             "map_z": 8965,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 20,
@@ -173,7 +173,7 @@ HMap.locations = [
             "map_x": -14260,
             "map_y": 222,
             "map_z": 8803,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 100,
@@ -199,8 +199,7 @@ HMap.locations = [
             "map_x": -8659,
             "map_y": 314,
             "map_z": 8185,
-            "title": "Inland Campsite",
-
+            "title": "Inland Campsite"
         },
         {
             "id": 103,
@@ -208,8 +207,7 @@ HMap.locations = [
             "map_x": -9686,
             "map_y": 202,
             "map_z": 5532,
-            "title": "Campsite",
-
+            "title": "Campsite"
         },
         {
             "id": 104,
@@ -217,8 +215,7 @@ HMap.locations = [
             "map_x": -10034,
             "map_y": 286,
             "map_z": 6362,
-            "title": "Tower",
-
+            "title": "Tower"
         },
         {
             "id": 105,
@@ -226,8 +223,7 @@ HMap.locations = [
             "map_x": -9003,
             "map_y": 288,
             "map_z": 5600,
-            "title": "Tower",
-
+            "title": "Tower"
         },
         {
             "id": 106,
@@ -235,7 +231,7 @@ HMap.locations = [
             "map_x": -8869,
             "map_y": 324,
             "map_z": 8394,
-            "title": "Tower",
+            "title": "Tower"
         },
         {
             "id": 200,
@@ -243,7 +239,8 @@ HMap.locations = [
             "map_x": -7750,
             "map_y": 272,
             "map_z": 4432,
-            "title": "Highland Lodge"
+            "title": "Highland Lodge",
+            desc: "Start your hunt from the Highland Lodge and enjoy some of the best views in the Evergreen Hunting Reserve. Elk and Turkey can be found uphill while Feral Hog and Whitetail roam the fields below."
         },
         {
             "id": 201,
@@ -251,7 +248,8 @@ HMap.locations = [
             "map_x": -6227,
             "map_y": 224,
             "map_z": 5733,
-            "title": "Homestead Lodge"
+            "title": "Homestead Lodge",
+            desc: "The Homestead Lodge is a converted old farm surrounded by abandoned fields and small patches of birch. Old buildings and improvised towers provide excellent ambush opportunities for agile hunters."
         },
         {
             "id": 202,
@@ -355,7 +353,7 @@ HMap.locations = [
             "map_x": -8275,
             "map_y": 228,
             "map_z": 4072,
-            "title": "Tower",
+            "title": "Tower"
         }        
     ];
 
