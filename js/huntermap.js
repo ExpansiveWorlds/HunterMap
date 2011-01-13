@@ -8,8 +8,9 @@ HMap.map = (function() {
 		init: function(div, options) {
 	        options = options || {};
 	        
-	        options.center = options.center || HMap.map.toLatLng(new google.maps.Point(HMap.locations[0].map_x, HMap.locations[0].map_z));
+	        options.center = options.center || HMap.map.toLatLng(new google.maps.Point(HMap.locations[1].map_x, HMap.locations[1].map_z));
 	        options.zoom = options.zoom || 12;
+	        options.h_disableDefaultInfoWindows = options.h_disableDefaultInfoWindows || false;
 	        
 	        options.disableDefaultUI = true;
 	        options.navigationControl = true;
@@ -19,7 +20,7 @@ HMap.map = (function() {
 	
 			HMap.mapTypes.set(gmap);
 	
-	        HMap.markers.populateMarkers(HMap.map);
+	        HMap.markers.populateMarkers(options.h_disableDefaultInfoWindows);
 	        
 	        google.maps.event.addListener(gmap, 'zoom_changed', HMap.markers.updateMarkers);
 	
@@ -63,12 +64,12 @@ HMap.mapTypes = (function() {
             p_y = (p_y < 16 ? '0' : '') + p_y.toString(16);
             var p_type = "satellite";
             
-            return 'http://thehunter.org.linweb58.kontrollpanelen.se/map/tiles/' + p_type + '/' + (z + 1) + '/tile_' + p_y + p_x + '.jpg';
+            return 'http://map.thehunter.org/tiles/' + p_type + '/' + (z + 1) + '/tile_' + p_y + p_x + '.jpg';
         },
         tileSize: new google.maps.Size(128, 128),
         isPng: false,
         minZoom: 11,
-        maxZoom: 16
+        maxZoom: 20
     });
 	
 	return {
@@ -96,17 +97,9 @@ HMap.markers = (function() {
     var getVisibleState = function(type, zoom) {
 	    return (zoom >= HMap.markerTypes[type].minZoom && zoom <= HMap.markerTypes[type].maxZoom);
     };
-    
-    var bindInfoWindow = function(marker, content, map) {
-		var infoWindow = new google.maps.InfoWindow({ content: content });
-
-		google.maps.event.addListener(marker, 'click', function() {
-			infoWindow.open(map, marker);
-		});	     
-    };
-        
+            
     return {    	
-		populateMarkers: function() {
+		populateMarkers: function(disableInfoWindows) {
 			var map = HMap.map.getMap();
 			var zoom = map.getZoom();
 			previousZoomLevel = zoom;
@@ -121,8 +114,8 @@ HMap.markers = (function() {
 	    			map: map
 	    		});
 	    		
-	    		if  (obj.desc) {
-	    			bindInfoWindow(marker, obj.desc, map);
+	    		if  (!disableInfoWindows && obj.desc) {
+	    			HMap.util.bindInfoWindow(marker, obj.desc, map);
 	    		}
 	    		
 	    		marker._obj = obj;
@@ -155,23 +148,54 @@ HMap.markers = (function() {
     		}
     		
 	    	previousZoomLevel = zoom;
-    	},
+    	}
     	
     }
     
 })();
 
+HMap.util = {};
+HMap.util.objectAsString = function(obj) {
+	var row = [];
+	$.each(obj, function(name, value) {
+		row.push('<b>' + name + '</b>: ' + value);
+	});
+	return row.join('<br>');
+};
+
+HMap.util.bindInfoWindow = function(marker, content, map) {
+	var infoWindow = new google.maps.InfoWindow({ content: content });
+
+	google.maps.event.addListener(marker, 'click', function() {
+		infoWindow.open(map, marker);
+	});	     
+};
+
 HMap.expedition = (function() {
 
+    var currentPath = null;
+    var eventMarkers = [];
+    var markersEnabled = [];
+
+	function resetEnabledMarkers(state) {
+		var state = arguments[0] || 0;
+		for (var i = 0; i <= HMap.eventIDMax; i++) {
+			markersEnabled[i] = state;
+		}	
+	}
+
+	// init
+	resetEnabledMarkers();
+	
     return {
     	/**
-    	 * Plot array with objects having properties map_x, map_z.
+    	 * Plot array with objects having properties x, z.
     	 */
-        plot: function(list) {
+        plotPath: function(list) {
             var coords = [];
             
             for (var i = 0; i < list.length; i++) {
-            	coords.push( HMap.map.toLatLng(new google.maps.Point(list[i].map_x, list[i].map_z)) );
+            	coords.push( HMap.map.toLatLng(new google.maps.Point(list[i].x, list[i].z)) );
             }
             
             var expeditionPath = new google.maps.Polyline({
@@ -182,6 +206,61 @@ HMap.expedition = (function() {
 			});
 			
 			expeditionPath.setMap(HMap.map.getMap());
+			
+			currentPath = expeditionPath;
+        },
+        
+        removePath: function() {
+            if (currentPath !== null) {
+                currentPath.setMap();
+            }
+        },
+        
+        addEventMarkers: function(events, enabled) {
+			var map = HMap.map.getMap(), i;
+
+			if (arguments[1]) {
+	        	for (i = 0; i < enabled.length; i++) {
+					markersEnabled[enabled[i]] = 1;
+	        	}
+			} else {
+				resetEnabledMarkers(1);
+			}
+			
+			for (var i = 0; i < events.length; i++) {
+				var desc = HMap.util.objectAsString(events[i]);
+				
+				events[i].marker = new google.maps.Marker({
+	    			title: events[i].event_name,
+	    			icon: HMap.eventMarkers[events[i].event_id].icon,
+	    			position: HMap.map.toLatLng(new google.maps.Point(events[i].x, events[i].z))
+	    		});
+	    		
+	    		// info window
+	    		HMap.util.bindInfoWindow(events[i].marker, desc, map);
+
+				events[i].marker.setMap( markersEnabled[events[i].event_id] ? map : null );
+			}
+			
+			eventMarkers = events;
+        },
+        
+        toggleEventMarker: function(eventId) {
+			markersEnabled[eventId] = 1 - markersEnabled[eventId];
+        	
+        	var state = markersEnabled[eventId] ? HMap.map.getMap() : null;
+        
+        	for (var i = 0; i < eventMarkers.length; i++) {
+        		if (eventMarkers[i].event_id == eventId) {
+					eventMarkers[i].marker.setMap(state);    		
+        		}
+        	}
+        },
+        
+        removeEventMarkers: function() {
+        	for (var i = 0; i < eventMarkers.length; i++) {
+        		eventMarkers[i].marker.setMap();
+        	}
         }
     }
 })();
