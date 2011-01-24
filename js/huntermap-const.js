@@ -33,151 +33,151 @@ HMap.eventID = {
 HMap.eventMarkers = {};
 
 HMap.eventMarkers[HMap.eventID.SHOOT] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(0, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(0, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.KILL] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*1, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*1, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.CONFIRMKILL] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*2, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*2, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.PHOTOGRAPH] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*3, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*3, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.DEPLETE] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*5, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*5, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.ANIMAL] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*6, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*6, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.MOVEITEM] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*7, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*7, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.SETITEMDATA] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*8, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*8, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.SPOT] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*10, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*10, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.CLUE] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*11, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*11, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.TRAIL] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*12, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*12, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.MESSAGE] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*15, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*15, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.RESTART_AT_LODGE_OR_CAMPSITE] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*15, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*15, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.MINIGAME_SCORE] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*16, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*16, 0),
 			new google.maps.Point(5, 5)
 		)
 };
 
 HMap.eventMarkers[HMap.eventID.UNKNOWN] = {
-	icon: 
+	icon:
 		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/event_icons_10x10.png",
-	    	new google.maps.Size(10, 10),
-	    	new google.maps.Point(10*17, 0),
+			new google.maps.Size(10, 10),
+			new google.maps.Point(10*17, 0),
 			new google.maps.Point(5, 5)
 		)
 };
@@ -186,78 +186,78 @@ HMap.eventMarkers[HMap.eventID.UNKNOWN] = {
 HMap.markerTypes = {};
 
 HMap.markerTypes[HMap.markerTypeId.LODGE] = {
-    minZoom: 11,
-    maxZoom: 16,
-    icon: [
+	minZoom: 11,
+	maxZoom: 16,
+	icon: [
 	 	new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/Map-Icons-32x32.png",
-	        new google.maps.Size(32, 32),
-	        new google.maps.Point(64, 0),
-	        new google.maps.Point(16, 16)
+			new google.maps.Size(32, 32),
+			new google.maps.Point(64, 0),
+			new google.maps.Point(16, 16)
 		),
 	 	new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/Map-Icons-16x16.png",
-	        new google.maps.Size(16, 16),
-	        new google.maps.Point(32, 0),
-	        new google.maps.Point(8, 8)
+			new google.maps.Size(16, 16),
+			new google.maps.Point(32, 0),
+			new google.maps.Point(8, 8)
 		)    
-    ]
+	]
 };
 
 HMap.markerTypes[HMap.markerTypeId.CAMPSITE] = {
-    minZoom: 13,
-    maxZoom: 16,
-    icon: [
+	minZoom: 13,
+	maxZoom: 16,
+	icon: [
 	   new google.maps.MarkerImage(
 	    	"http://map.thehunter.org/gfx/Map-Icons-32x32.png",
-	        new google.maps.Size(32, 32),
-	        new google.maps.Point(160, 0),
-	        new google.maps.Point(16, 16)
+			new google.maps.Size(32, 32),
+			new google.maps.Point(160, 0),
+			new google.maps.Point(16, 16)
 	    ),
 	   new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/Map-Icons-16x16.png",
-	        new google.maps.Size(16, 16),
-	        new google.maps.Point(80, 0),
-	        new google.maps.Point(8, 8)
+			new google.maps.Size(16, 16),
+			new google.maps.Point(80, 0),
+			new google.maps.Point(8, 8)
 	    )
-    ]
+	]
 };
 
 HMap.markerTypes[HMap.markerTypeId.TOWER] = {
-    minZoom: 14,
-    maxZoom: 16,
-    icon: [
+	minZoom: 14,
+	maxZoom: 16,
+	icon: [
     	new google.maps.MarkerImage(
 	    	"http://map.thehunter.org/gfx/Map-Icons-32x32.png",
-	        new google.maps.Size(32, 32),
-	        new google.maps.Point(128, 0),
-	        new google.maps.Point(16, 16)    
+			new google.maps.Size(32, 32),
+			new google.maps.Point(128, 0),
+			new google.maps.Point(16, 16)
 		),
     	new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/Map-Icons-16x16.png",
-	        new google.maps.Size(16, 16),
-	        new google.maps.Point(64, 0),
-	        new google.maps.Point(8, 8)  
+			new google.maps.Size(16, 16),
+			new google.maps.Point(64, 0),
+			new google.maps.Point(8, 8)
 	    )
-    ]
+	]
 };
 
 HMap.markerTypes[HMap.markerTypeId.POI] = {
-    minZoom: 14,
-    maxZoom: 16,
-    icon: [
-	   new google.maps.MarkerImage(
+	minZoom: 14,
+	maxZoom: 16,
+	icon: [
+		new google.maps.MarkerImage(
 		 	"http://map.thehunter.org/gfx/Map-Icons-32x32.png",
-	        new google.maps.Size(32, 32),
-	        new google.maps.Point(192, 0),
-	        new google.maps.Point(16, 16)    
-	   ),
-	   new google.maps.MarkerImage(
+			new google.maps.Size(32, 32),
+			new google.maps.Point(192, 0),
+			new google.maps.Point(16, 16)
+		),
+		new google.maps.MarkerImage(
 			"http://map.thehunter.org/gfx/Map-Icons-16x16.png",
-	        new google.maps.Size(16, 16),
-	        new google.maps.Point(96, 0),
-	        new google.maps.Point(8, 8)   
-	   )   
-    ]
+			new google.maps.Size(16, 16),
+			new google.maps.Point(96, 0),
+			new google.maps.Point(8, 8)
+		)
+	]
 };
 
