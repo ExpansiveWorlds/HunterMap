@@ -200,7 +200,7 @@ HMap.markerTypes[HMap.markerTypeId.LODGE] = {
 			new google.maps.Size(16, 16),
 			new google.maps.Point(32, 0),
 			new google.maps.Point(8, 8)
-		)    
+		)
 	]
 };
 
